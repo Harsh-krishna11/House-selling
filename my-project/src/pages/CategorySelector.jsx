@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link for routing
 import { TbBuildingCommunity } from "react-icons/tb";
 import {
   PiCarSimple,
@@ -64,7 +65,7 @@ export default function CategorySelector() {
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{cat.icon}</span>
-                  <span className="text-">{cat.name}</span>
+                  <span>{cat.name}</span>
                 </div>
 
                 <IoIosArrowForward className=" text-2xl text-[#8d9094]" />
@@ -72,16 +73,20 @@ export default function CategorySelector() {
             ))}
           </div>
 
+          {/* Right Subcategories */}
           <div className="w-1/2">
             {categories
               .find((cat) => cat.name === selected)
               ?.subcategories?.map((sub) => (
-                <div
+                <Link
                   key={sub}
-                  className=" py-4  cursor-pointer  hover:bg-[#0e040533] border-b text-16px text-[#8d9094]"
+                  to={`/upload?category=${selected}&subcategory=${encodeURIComponent(
+                    sub
+                  )}`} // pass category and subcategory as query params
+                  className="block py-4 cursor-pointer hover:bg-[#0e040533] border-b text-16px text-[#8d9094]"
                 >
                   {sub}
-                </div>
+                </Link>
               ))}
           </div>
         </div>

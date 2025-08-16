@@ -3,6 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import { FaPlus } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { MdMyLocation, MdLocationOn } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function OLXHeader() {
   const [search, setSearch] = useState("");
@@ -11,6 +12,7 @@ export default function OLXHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [location, setLocation] = useState("India");
   const [onlyCars, setOnlyCars] = useState(false);
+  const navigate = useNavigate();
 
   const popularLocations = [
     "Delhi",
@@ -268,7 +270,10 @@ export default function OLXHeader() {
                 "linear-gradient(to right, #facc15 33%, #14b8a6 33%, #14b8a6 66%, #2563eb 66%)",
             }}
           >
-            <button className="flex items-center bg-white rounded-full px-5 py-2 text-blue-900 font-semibold shadow">
+            <button
+              onClick={() => navigate("/CategorySelector")} // direct navigation
+              className="flex items-center bg-white rounded-full px-5 py-2 text-blue-900 font-semibold shadow"
+            >
               <FaPlus className="mr-2" size={16} />
               SELL
             </button>
