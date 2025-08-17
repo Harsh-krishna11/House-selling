@@ -19,4 +19,14 @@ export const createListing = async (formData) => {
   return data;
 };
 
+export const getListingById = async (id) => {
+  try {
+    const { data } = await API.get(`/${id}`);
+    return data.data;
+  } catch (error) {
+    console.error("Error fetching property:", error);
+    throw error;
+  }
+};
+
 export default API;

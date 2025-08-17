@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { PlusCircle, X } from "lucide-react";
+import { TbCameraPlus } from "react-icons/tb";
+
 export default function PhotoUploader({ photos, setPhotos }) {
   const fileInputRef = useRef(null);
 
@@ -48,7 +50,7 @@ export default function PhotoUploader({ photos, setPhotos }) {
         {Array.from({ length: 20 - (photos ? photos.length : 0) }).map(
           (_, index) => (
             <div key={`placeholder-${index}`}>
-              <label className="flex flex-col items-center justify-center w-24 h-24 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
+              <label className="flex flex-col items-center justify-center w-26 h-26 bg-white border-[2px] border-[#020812] rounded-sm  cursor-pointer hover:bg-gray-200 transition-colors">
                 <input
                   type="file"
                   multiple
@@ -57,7 +59,7 @@ export default function PhotoUploader({ photos, setPhotos }) {
                   className="hidden"
                   ref={fileInputRef}
                 />
-                <PlusCircle size={32} className="text-blue-500" />
+                <TbCameraPlus className="text-3xl  text-gray-500 hover:text-black"></TbCameraPlus>
                 <span className="text-xs text-gray-500 mt-1">Add Photo</span>
               </label>
             </div>
